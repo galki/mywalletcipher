@@ -1,23 +1,25 @@
 // @flow
 
 import React from 'react'
-import _ from 'lodash'
 
 import Form from 'material-ui-form'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
+import Divider from 'material-ui/Divider'
 
 // $FlowFixMe
 import Encryption from '@utilities/Encryption' // eslint-disable-line
 
 
+const dividerStyle = { margin: '20px 0' }
+
 type State = {
-  decryptedData: string
+  decryptedData: ?Object,
 };
 
 export default class Decrypt extends React.Component<{}, State> {
   state = {
-    decryptedData: '',
+    decryptedData: undefined,
   }
 
   submit = (fields: Object) => {
@@ -51,6 +53,7 @@ export default class Decrypt extends React.Component<{}, State> {
 
         { this.state.decryptedData &&
           <div>
+            <Divider style={dividerStyle} />
             <span>{this.state.decryptedData['key[0]']}:</span>
             <span>{this.state.decryptedData['value[0]']}</span>
           </div>

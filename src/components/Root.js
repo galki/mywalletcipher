@@ -21,10 +21,19 @@ const Root = () => (
   <div style={wrapperStyle}>
     <CssBaseline />
     <BrowserRouter>
-      <div>
+      <div style={{ flexGrow: 1 }}>
         <AppBar position="sticky">
           <Toolbar>
-            satoshi cipher
+            <span>
+              satoshi cipher (
+              <a
+                href="https://github.com/unitedhubs/satoshicipher"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Github
+              </a>)
+            </span>
           </Toolbar>
         </AppBar>
 
