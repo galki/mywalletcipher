@@ -5,6 +5,11 @@ const WebpackStripLoader = require('strip-loader')
 const webpack = require('webpack')
 
 
+let devtool = false
+let nodeEnv = 'development'
+const plugins = []
+const externals = []
+
 const rules = [
   {
     test: /\.js$/,
@@ -38,47 +43,44 @@ const rules = [
   //     { loader: 'markdown-loader' },
   //   ],
   // },
-  {
-    test: /\.html$/,
-    use: [
-      {
-        loader: 'html-loader',
-        options: { minimize: true },
-      },
-    ],
-  },
 ]
-
-let devtool = false
-let nodeEnv = 'development'
-const plugins = []
-const externals = []
 
 // development
 if (!args.p) {
-  plugins.push(
-    new HtmlWebPackPlugin({
-      template: './src/statics/index.html',
-    })
-  )
+  rules.push({
+    test: /\.html$/,
+    loader: 'html-loader',
+  })
 // production
 } else {
   nodeEnv = 'production'
   // devtool = 'source-map'
-  // externals.push('react', 'react-dom', 'material-ui')
-  rules.push({
-    test: /\.js$/,
-    exclude: path.resolve(__dirname, 'node_modules'),
-    loader: WebpackStripLoader.loader('console.log'),
-  })
-  plugins.push(
-    new HtmlWebPackPlugin({
-      template: './src/statics/index.html',
-    })
+  // externals.push(
+  //   'lodash',
+  //   'node-forge',
+  //   'react',
+  //   'react-dom',
+  //   'react-router-dom',
+  //   'material-ui',
+  // )
+  rules.push(
+    {
+      test: /\.js$/,
+      exclude: path.resolve(__dirname, 'node_modules'),
+      loader: WebpackStripLoader.loader('console.log'),
+    },
+    {
+      test: /\.html$/,
+      loader: 'html-loader',
+      options: { minimize: true },
+    }
   )
 }
 
 plugins.push(
+  new HtmlWebPackPlugin({
+    template: './src/statics/index.html',
+  }),
   new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': JSON.stringify(nodeEnv),
@@ -92,14 +94,15 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'js/main.js',
-  //   // filename: 'material-ui-form.min.js',
-  //   // library: 'MaterialUIForm',
-  //   libraryTarget: 'umd',
-  //   // path: path.resolve(__dirname, 'bundle'),
-  //   // umdNamedDefine: true,
+    libraryTarget: 'umd',
   },
   module: {
     rules,
   },
   plugins,
+  resolve: {
+    alias: {
+      '@utilities': path.resolve(__dirname, 'src/utilities'),
+    },
+  },
 }

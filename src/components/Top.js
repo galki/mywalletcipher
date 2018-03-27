@@ -1,36 +1,38 @@
 // @flow
 
 import React from 'react'
-import ReactDOM from 'react-dom'
 
+import Tabs, { Tab } from 'material-ui/Tabs'
 
-type Props = {
-  // field?: Object,
-  // fieldComp: Object,
-  // onConstruct: Function,
-  // onValueChange: Function,
-  // useNativeRequiredValidator: boolean,
-  // validateInputOnBlur: boolean,
-};
+import Encrypt from './Encrypt'
+import Decrypt from './Decrypt'
+
 
 type State = {
-  // helperText: ?string,
-  // isError: boolean,
-  // value: mixed,
+  tabIndex: number,
 };
 
-export default class Top extends React.Component<Props, State> {
-  static defaultProps = {
-    field: {},
+export default class Top extends React.Component<{}, State> {
+  state = {
+    tabIndex: 0,
+  }
 
-    // this.state = {
-    //   test: 123,
-    // }
+  onTabClick = (event: Event, tabIndex: number) => {
+    this.setState({ tabIndex })
   }
 
   render() {
+    const { tabIndex } = this.state
+
     return (
-      123
+      <div>
+        <Tabs value={tabIndex} onChange={this.onTabClick}>
+          <Tab label="Encrypt" />
+          <Tab label="Decrypt" />
+        </Tabs>
+        {tabIndex === 0 && <Encrypt />}
+        {tabIndex === 1 && <Decrypt />}
+      </div>
     )
   }
 }
