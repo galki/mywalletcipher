@@ -37,17 +37,10 @@ const rules = [
       { loader: 'less-loader' },
     ],
   },
-  // {
-  //   test: /\.md$/,
-  //   use: [
-  //     { loader: 'html-loader' },
-  //     { loader: 'markdown-loader' },
-  //   ],
-  // },
 ]
 
 // development
-if (!args.p) {
+if (!args.p && args.mode !== 'production') {
   rules.push({
     test: /\.html$/,
     loader: 'html-loader',
@@ -55,15 +48,14 @@ if (!args.p) {
 // production
 } else {
   nodeEnv = 'production'
-  // devtool = 'source-map'
-  // externals.push(
-  //   'lodash',
-  //   'node-forge',
-  //   'react',
-  //   'react-dom',
-  //   'react-router-dom',
-  //   'material-ui',
-  // )
+  devtool = 'source-map'
+  externals.push(
+    'lodash',
+    'node-forge',
+    'react',
+    'react-dom',
+    'react-router-dom',
+  )
   rules.push(
     {
       test: /\.js$/,
@@ -79,16 +71,19 @@ if (!args.p) {
 }
 
 plugins.push(
-  new HtmlWebPackPlugin({
-    template: './src/statics/index.html',
-  }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(nodeEnv),
     },
   }),
+  new HtmlWebPackPlugin({
+    template: './src/statics/index.html',
+    inject: false,
+  }),
   new CopyWebpackPlugin([
     { from: './src/statics/*', to: './', flatten: true },
+    { from: './src/statics/js/*', to: './js/', flatten: true },
+    { from: './vendor/*', to: './js/', flatten: true },
   ]),
 )
 

@@ -7,7 +7,7 @@
     "build": "rm -Rf ./public && webpack -p",
     "check": "npm run lint && npm run flow && npm run test",
     "dev": "webpack-dev-server --mode development --entry=./src --open",
-    "pro": "npm run build && webpack-dev-server --mode production --entry=./public/js/main.js --open",
+    "pro": "webpack-dev-server --mode production --entry=./public/js/main.js --open",
     "flow": "flow",
     "lint": "eslint -c eslintrc.json ./src --no-eslintrc",
     "prepublish": "npm run check && npm run build",
@@ -91,6 +91,7 @@
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.0",
+    "webpack-require-http": "^0.4.3",
     "yargs": "^11.0.0"
   }
 }
