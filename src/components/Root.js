@@ -1,5 +1,6 @@
+// @flow
+
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 
 import CssBaseline from 'material-ui/CssBaseline'

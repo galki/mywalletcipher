@@ -23,8 +23,8 @@ export default class Decrypt extends React.Component<{}, State> {
   }
 
   submit = (fields: Object) => {
-    const { data, password } = fields
-    const decryptedData: Object | boolean = Encryption.decrypt(data, password)
+    const { data, password, pin } = fields
+    const decryptedData: ?Object = Encryption.decrypt(data, password, pin)
     this.setState({ decryptedData })
   }
 
@@ -46,6 +46,13 @@ export default class Decrypt extends React.Component<{}, State> {
             data-validators="isRequired"
             type="password"
             name="password"
+            value=""
+          />
+          <TextField
+            label="PIN code"
+            helperText="4 digit PIN code for extra security"
+            data-validators={['isInt', { isLength: { min: 4, max: 4 } }]}
+            name="pin"
             value=""
           />
           <Button variant="raised" type="submit">Decrypt</Button>

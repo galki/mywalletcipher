@@ -24,8 +24,9 @@ export default class Encrypt extends React.Component<{}, State> {
   }
 
   submit = (fields: Object) => {
-    const data = _.omit(fields, 'password')
-    const encryptedText: string = Encryption.encrypt(fields.password, data)
+    const { password, pin } = fields
+    const data = _.omit(fields, ['password', 'pin'])
+    const encryptedText: string = Encryption.encrypt(data, password, pin)
     this.setState({ encryptedText })
   }
 
@@ -56,6 +57,13 @@ export default class Encrypt extends React.Component<{}, State> {
             data-validators="isRequired"
             type="password"
             name="password"
+            value=""
+          />
+          <TextField
+            label="PIN code"
+            helperText="4 digit PIN code for extra security"
+            data-validators={['isInt', { isLength: { min: 4, max: 4 } }]}
+            name="pin"
             value=""
           />
 
