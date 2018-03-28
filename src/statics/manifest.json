@@ -1,0 +1,10 @@
+{
+  "short_name": "satoshicipher",
+  "name": "satoshi cipher",
+  "start_url": "index.html?launcher=true",
+  "icons": [],
+  "display": "standalone",
+  "theme_color": "#6900FF",
+  "background_color": "#6900FF",
+  "gcm_sender_id": "103953800507"
+}

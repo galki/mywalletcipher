@@ -1,6 +1,7 @@
 const path = require('path')
 const args = require('yargs').argv
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const WebpackStripLoader = require('strip-loader')
 const webpack = require('webpack')
 
@@ -83,9 +84,12 @@ plugins.push(
   }),
   new webpack.DefinePlugin({
     'process.env': {
-      'NODE_ENV': JSON.stringify(nodeEnv),
+      NODE_ENV: JSON.stringify(nodeEnv),
     },
-  })
+  }),
+  new CopyWebpackPlugin([
+    { from: './src/statics/*', to: './', flatten: true },
+  ]),
 )
 
 module.exports = {
