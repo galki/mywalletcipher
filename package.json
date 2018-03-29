@@ -1,5 +1,5 @@
 {
-  "name": "satoshicipher",
+  "name": "mywalletcipher",
   "version": "1.0.0-alpha.1",
   "description": "easy and safe online/offline cipher engine",
   "main": "public/index.html",
@@ -15,11 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unitedhubs/satoshicipher.git"
+    "url": "git+https://github.com/unitedhubs/mywalletcipher.git"
   },
   "keywords": [
     "cipher",
     "crypto",
+    "wallet",
     "online",
     "offline",
     "cryptography"
@@ -30,9 +31,9 @@
   "author": "unitedhubs",
   "license": "The Unlicense",
   "bugs": {
-    "url": "https://github.com/unitedhubs/satoshicipher/issues"
+    "url": "https://github.com/unitedhubs/mywalletcipher/issues"
   },
-  "homepage": "https://github.com/unitedhubs/satoshicipher#readme",
+  "homepage": "https://github.com/unitedhubs/mywalletcipher#readme",
   "jest": {
     "globals": {
       "_": true
@@ -43,9 +44,11 @@
     ]
   },
   "dependencies": {
+    "form-data-to-object": "^0.2.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.39",
     "material-ui-form": "^1.0.0-alpha.17",
+    "mdi-material-ui": "^3.2.0",
     "node-forge": "^0.7.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

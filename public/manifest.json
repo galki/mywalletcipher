@@ -1,6 +1,6 @@
 {
-  "short_name": "satoshicipher",
-  "name": "satoshi cipher",
+  "short_name": "mywalletcipher",
+  "name": "mywalletcipher",
   "start_url": "index.html?launcher=true",
   "icons": [],
   "display": "standalone",
