@@ -23,32 +23,31 @@ type Props = {
   classes: Object,
 };
 
-@withStyles(styles)
-export default class Header extends React.Component<Props> {
-  render() {
-    const { classes } = this.props
+const Header = (props: Props) => {
+  const { classes } = props
 
-    return (
-      <AppBar position="sticky">
-        <Toolbar>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            mywalletcipher
-          </Typography>
-          <a
-            href="https://github.com/unitedhubs/mywalletcipher"
-            rel="noopener noreferrer"
-            target="_blank"
+  return (
+    <AppBar position="sticky">
+      <Toolbar>
+        <Typography variant="title" color="inherit" className={classes.flex}>
+          mywalletcipher
+        </Typography>
+        <a
+          href="https://github.com/unitedhubs/mywalletcipher"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <IconButton
+            color="secondary"
+            className={classes.button}
+            aria-label="Github"
           >
-            <IconButton
-              color="secondary"
-              className={classes.button}
-              aria-label="Github"
-            >
-              <GithubIcon />
-            </IconButton>
-          </a>
-        </Toolbar>
-      </AppBar>
-    )
-  }
+            <GithubIcon />
+          </IconButton>
+        </a>
+      </Toolbar>
+    </AppBar>
+  )
 }
+
+export default withStyles(styles)(Header)

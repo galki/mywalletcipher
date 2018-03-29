@@ -31,8 +31,7 @@ type State = {
   rows: Array<boolean>,
 };
 
-@withStyles(styles)
-export default class Encrypt extends Component<Props, State> {
+class Encrypt extends Component<Props, State> {
   state = {
     encryptedText: '',
     rows: [true],
@@ -107,3 +106,5 @@ export default class Encrypt extends Component<Props, State> {
     )
   }
 }
+
+export default withStyles(styles)(Encrypt)

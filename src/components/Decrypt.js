@@ -37,8 +37,7 @@ type State = {
   rows: ?Object,
 };
 
-@withStyles(styles)
-export default class Decrypt extends React.Component<Props, State> {
+class Decrypt extends React.Component<Props, State> {
   state = {
     rows: undefined,
   }
@@ -110,3 +109,5 @@ export default class Decrypt extends React.Component<Props, State> {
     )
   }
 }
+
+export default withStyles(styles)(Decrypt)
