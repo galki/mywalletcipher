@@ -65,7 +65,7 @@ if (!args.p && args.mode !== 'production') {
     {
       test: /\.html$/,
       loader: 'html-loader',
-      options: { minimize: true },
+      options: { minimize: false },
     }
   )
 }
