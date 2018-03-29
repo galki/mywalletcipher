@@ -1,5 +1,5 @@
 {
-  "name": "satoshicipher",
+  "name": "mywalletcipher",
   "version": "1.0.0-alpha.1",
   "description": "easy and safe online/offline cipher engine",
   "main": "public/index.html",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unitedhubs/satoshicipher.git"
+    "url": "git+https://github.com/unitedhubs/mywalletcipher.git"
   },
   "keywords": [
     "cipher",
@@ -30,9 +30,9 @@
   "author": "unitedhubs",
   "license": "The Unlicense",
   "bugs": {
-    "url": "https://github.com/unitedhubs/satoshicipher/issues"
+    "url": "https://github.com/unitedhubs/mywalletcipher/issues"
   },
-  "homepage": "https://github.com/unitedhubs/satoshicipher#readme",
+  "homepage": "https://github.com/unitedhubs/mywalletcipher#readme",
   "jest": {
     "globals": {
       "_": true
