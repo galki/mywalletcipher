@@ -1,47 +1,24 @@
 // @flow
 
 import React from 'react'
-import { BrowserRouter, Link, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 
+import { MuiThemeProvider } from 'material-ui/styles'
 import CssBaseline from 'material-ui/CssBaseline'
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Button from 'material-ui/Button'
 
+import theme from '../styles/theme'
+import Header from './Header'
 import Top from './Top'
 
 
-const wrapperStyle = {
-  backgroundColor: 'white',
-  height: 'inherit',
-  overflowX: 'hidden',
-  overflowY: 'auto',
-}
-
-const Root = () => (
-  <div style={wrapperStyle}>
+export default () => (
+  <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <BrowserRouter>
       <div style={{ flexGrow: 1 }}>
-        <AppBar position="sticky">
-          <Toolbar>
-            <span>
-              satoshi cipher (
-              <a
-                href="https://github.com/unitedhubs/satoshicipher"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Github
-              </a>)
-            </span>
-          </Toolbar>
-        </AppBar>
-
+        <Header />
         <Route exact path="/" component={Top} />
       </div>
     </BrowserRouter>
-  </div>
+  </MuiThemeProvider>
 )
-
-export default Root

@@ -14,8 +14,8 @@ function getNumIterations(min: number, max: number, pin: ?number) {
   return Math.floor(Math.random() * ((max - min) + 1)) + min
 }
 
-const MIN_ITERATIONS = 5000
-const MAX_ITERATIONS = 10000
+const MIN_ITERATIONS = 3000
+const MAX_ITERATIONS = 30000
 
 export default class Encryption {
   static encrypt(data: Object, password: string, pin: ?number): string {
