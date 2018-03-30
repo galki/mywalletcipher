@@ -44,6 +44,7 @@
     ]
   },
   "dependencies": {
+    "clipboard": "^2.0.0",
     "form-data-to-object": "^0.2.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.39",

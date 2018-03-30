@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import React, { Fragment } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 import { MuiThemeProvider } from 'material-ui/styles'
@@ -15,10 +15,10 @@ export default () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <BrowserRouter>
-      <div style={{ flexGrow: 1 }}>
+      <Fragment>
         <Header />
         <Route exact path="/" component={Top} />
-      </div>
+      </Fragment>
     </BrowserRouter>
   </MuiThemeProvider>
 )

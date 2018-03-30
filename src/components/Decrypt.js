@@ -25,7 +25,11 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
   }),
   table: {
-    minWidth: 700,
+    minWidth: '100%',
+  },
+  input: {
+    marginRight: '20px',
+    width: '300px',
   },
 })
 
@@ -63,7 +67,9 @@ class Decrypt extends React.Component<Props, State> {
               rowsMax="5"
               name="encryptedData"
               value=""
+              fullWidth
             />
+            <br />
             <TextField
               label="Password"
               helperText="the password you encrypted your data with"
@@ -71,6 +77,7 @@ class Decrypt extends React.Component<Props, State> {
               type="password"
               name="password"
               value=""
+              className={classes.input}
             />
             <TextField
               label="PIN code"
@@ -79,8 +86,7 @@ class Decrypt extends React.Component<Props, State> {
               name="pin"
               value=""
             />
-          </Paper>
-          <Paper className={classes.paper} elevation={4}>
+            <br /><br />
             <Button variant="raised" type="submit">Decrypt</Button>
           </Paper>
         </Form>
