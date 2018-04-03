@@ -3,13 +3,13 @@
 requirejs.config({
   paths: {
     lodash: [
-      '//unpkg.com/lodash@4.17.4/lodash.min',
+      '//unpkg.com/lodash@4.17.5/lodash.min',
     ],
     react: [
-      '//unpkg.com/react@16.2.0/umd/react.production.min',
+      '//unpkg.com/react@16.3.0/umd/react.production.min',
     ],
     'react-dom': [
-      '//unpkg.com/react-dom@16.2.0/umd/react-dom.production.min',
+      '//unpkg.com/react-dom@16.3.0/umd/react-dom.production.min',
     ],
     'react-router-dom': [
       '//unpkg.com/react-router-dom@4.2.2/umd/react-router-dom.min',
