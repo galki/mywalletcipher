@@ -6,6 +6,7 @@ import formDataToObject from 'form-data-to-object'
 import ClipboardJS from 'clipboard'
 
 import Button from 'material-ui/Button'
+import Divider from 'material-ui/Divider'
 import Form from 'material-ui-form'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
@@ -17,12 +18,21 @@ import Dialog, {
   DialogTitle,
   withMobileDialog,
 } from 'material-ui/Dialog'
+import IconButton from 'material-ui/IconButton'
+import RemoveIcon from 'mdi-material-ui/CloseCircle'
 
 // $FlowFixMe
 import Encryption from '@utilities/Encryption' // eslint-disable-line
 
 
 const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    marginRight: '20px',
+    width: '235px',
+  },
   paper: theme.mixins.gutters({
     paddingTop: 16,
     paddingBottom: 16,
@@ -35,10 +45,6 @@ const styles = theme => ({
     marginTop: '25px',
     resize: 'vertical',
   },
-  input: {
-    marginRight: '20px',
-    width: '300px',
-  },
 })
 
 type Props = {
@@ -47,13 +53,13 @@ type Props = {
 
 type State = {
   encryptedText: string,
-  rows: Array<boolean>,
+  rows: Array<Object>,
 };
 
 class Encrypt extends Component<Props, State> {
   state = {
     encryptedText: '',
-    rows: [true],
+    rows: [{ wallet: '', secret: '' }],
   }
 
   componentDidMount() {
@@ -68,14 +74,22 @@ class Encrypt extends Component<Props, State> {
 
   clipboard: ?Object
 
+  closeDialog = () => {
+    this.setState({ encryptedText: '' })
+  }
+
   addRow = () => {
-    const rows = _.clone(this.state.rows)
-    rows.push(true)
+    const { rows } = this.state
+    rows.push({ wallet: '', secret: '' })
     this.setState({ rows })
   }
 
-  closeDialog = () => {
-    this.setState({ encryptedText: '' })
+  deleteRow = (index) => {
+    const { rows } = this.state
+    if (rows.length > 1) {
+      rows.splice(index, 1)
+      this.setState({ rows })
+    }
   }
 
   submit = (fields: Object) => {
@@ -94,29 +108,39 @@ class Encrypt extends Component<Props, State> {
           <Paper className={classes.paper} elevation={4}>
             {this.state.rows.map((row, i) => (
               // eslint-disable-next-line react/no-array-index-key
-              <Fragment key={row + i}>
+              <Fragment key={_.uniqueId()}>
                 <TextField
-                  label="Label"
-                  helperText="what are you encrypting?"
+                  label="Wallet"
+                  helperText="wallet name or address"
                   data-validators="isRequired"
-                  name={`rows[${i}][label]`}
+                  name={`rows[${i}][wallet]`}
                   value=""
                   className={classes.input}
                 />
                 <TextField
-                  label="Value"
-                  helperText="the data you want to encrypt"
+                  label="Secret"
+                  helperText="password, PK, mnemonic phrase"
                   data-validators="isRequired"
-                  name={`rows[${i}][value]`}
+                  name={`rows[${i}][secret]`}
                   value=""
                 />
+                {this.state.rows.length > 1 &&
+                  <IconButton
+                    className={classes.button}
+                    aria-label="Remove wallet"
+                    onClick={() => this.deleteRow(i)}
+                    deletefieldrow={`rows[${i}]`}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                }
               </Fragment>
             ))}
             <br /><br />
             <Button variant="raised" onClick={this.addRow}>Add row</Button>
-          </Paper>
 
-          <Paper className={classes.paper} elevation={4}>
+            <Divider style={{ margin: '20px 0' }} />
+
             <TextField
               label="Password"
               helperText="you will need it to decrypt your data"
@@ -134,7 +158,7 @@ class Encrypt extends Component<Props, State> {
               value=""
             />
             <br /><br />
-            <Button variant="raised" type="submit">Encrypt</Button>
+            <Button variant="raised" color="primary" type="submit">Encrypt</Button>
           </Paper>
         </Form>
 

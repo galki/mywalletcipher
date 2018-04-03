@@ -87,7 +87,7 @@ class Decrypt extends React.Component<Props, State> {
               value=""
             />
             <br /><br />
-            <Button variant="raised" type="submit">Decrypt</Button>
+            <Button variant="raised" color="primary" type="submit">Decrypt</Button>
           </Paper>
         </Form>
 
@@ -102,9 +102,9 @@ class Decrypt extends React.Component<Props, State> {
               </TableHead>
               <TableBody>
                 {this.state.rows.map(row => (
-                  <TableRow key={row.label}>
-                    <TableCell>{row.label}</TableCell>
-                    <TableCell>{row.value}</TableCell>
+                  <TableRow key={row.wallet}>
+                    <TableCell>{row.wallet}</TableCell>
+                    <TableCell>{row.secret}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
