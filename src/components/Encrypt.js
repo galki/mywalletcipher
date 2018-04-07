@@ -84,7 +84,7 @@ class Encrypt extends Component<Props, State> {
     this.setState({ rows })
   }
 
-  deleteRow = (index) => {
+  removeRow = (index) => {
     const { rows } = this.state
     if (rows.length > 1) {
       rows.splice(index, 1)
@@ -128,7 +128,7 @@ class Encrypt extends Component<Props, State> {
                   <IconButton
                     className={classes.button}
                     aria-label="Remove wallet"
-                    onClick={() => this.deleteRow(i)}
+                    onClick={() => this.removeRow(i)}
                     deletefieldrow={`rows[${i}]`}
                   >
                     <RemoveIcon />
