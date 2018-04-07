@@ -1,4 +1,5 @@
 [ignore]
+./public/.*
 
 [include]
 
@@ -8,5 +9,6 @@
 
 [options]
 esproposal.decorators=ignore
+module.name_mapper='^@utilities' ->'<PROJECT_ROOT>/src/utilities'
 
 [strict]

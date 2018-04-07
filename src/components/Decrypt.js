@@ -14,7 +14,6 @@ import Table, {
 import TextField from 'material-ui/TextField'
 import { withStyles } from 'material-ui/styles'
 
-// $FlowFixMe
 import Encryption from '@utilities/Encryption' // eslint-disable-line
 
 
@@ -41,7 +40,9 @@ type State = {
   rows: ?Object,
 };
 
-class Decrypt extends React.Component<Props, State> {
+@withStyles(styles)
+// $FlowFixMe
+export default class Decrypt extends React.Component<Props, State> {
   state = {
     rows: undefined,
   }
@@ -115,5 +116,3 @@ class Decrypt extends React.Component<Props, State> {
     )
   }
 }
-
-export default withStyles(styles)(Decrypt)

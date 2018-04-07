@@ -21,7 +21,6 @@ import Dialog, {
 import IconButton from 'material-ui/IconButton'
 import RemoveIcon from 'mdi-material-ui/CloseCircle'
 
-// $FlowFixMe
 import Encryption from '@utilities/Encryption' // eslint-disable-line
 
 
