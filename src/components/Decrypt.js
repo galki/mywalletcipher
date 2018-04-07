@@ -14,7 +14,7 @@ import Table, {
 import TextField from 'material-ui/TextField'
 import { withStyles } from 'material-ui/styles'
 
-import Encryption from '@utilities/Encryption' // eslint-disable-line
+import Encryption from 'Utilities/Encryption'
 
 
 const styles = theme => ({

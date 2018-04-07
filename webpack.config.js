@@ -26,7 +26,9 @@ const rules = [
         'react',
         'stage-0',
       ],
-      plugins: ['transform-decorators-legacy'],
+      plugins: [
+        'transform-decorators-legacy',
+      ],
     },
   },
   {
@@ -100,8 +102,9 @@ module.exports = {
   },
   plugins,
   resolve: {
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     alias: {
-      '@utilities': path.resolve(__dirname, 'src/utilities'),
+      Utilities: path.resolve(__dirname, 'src/utilities'),
     },
   },
 }
