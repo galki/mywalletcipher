@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --mode development --entry=./src --open",
     "start": "webpack-dev-server --mode production --entry=./public/js/main.js --open",
     "flow": "flow",
-    "lint": "eslint -c eslintrc.json ./src --no-eslintrc",
+    "lint": "eslint -c .eslintrc.json ./src --no-eslintrc",
     "prepare": "npm run check && npm run build",
     "test": "node ./tools/windows-safe-jest.js"
   },
@@ -48,7 +48,7 @@
     "form-data-to-object": "^0.2.0",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.40",
-    "material-ui-form": "^1.0.0-alpha.19",
+    "material-ui-form": "^1.0.0-alpha.20",
     "mdi-material-ui": "^3.2.0",
     "node-forge": "^0.7.4",
     "react": "^16.3.0",
