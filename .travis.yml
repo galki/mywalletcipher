@@ -2,6 +2,5 @@ language: node_js
 node_js:
   - "stable"
 script:
-  # - coveralls < coverage/lcov.info
 notifications:
   email: false
