@@ -21,7 +21,7 @@ import Dialog, {
 import IconButton from 'material-ui/IconButton'
 import RemoveIcon from 'mdi-material-ui/CloseCircle'
 
-import Encryption from 'Utilities/Encryption'
+import Encryption from '_utilities/Encryption'
 
 
 const styles = theme => ({

@@ -9,6 +9,6 @@
 
 [options]
 esproposal.decorators=ignore
-module.name_mapper='^Utilities' ->'<PROJECT_ROOT>/src/utilities'
+module.name_mapper='^_utilities' ->'<PROJECT_ROOT>/src/utilities'
 
 [strict]

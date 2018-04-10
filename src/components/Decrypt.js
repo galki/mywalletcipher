@@ -14,7 +14,7 @@ import Table, {
 import TextField from 'material-ui/TextField'
 import { withStyles } from 'material-ui/styles'
 
-import Encryption from 'Utilities/Encryption'
+import Encryption from '_utilities/Encryption'
 
 
 const styles = theme => ({
